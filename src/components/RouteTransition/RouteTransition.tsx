@@ -253,6 +253,7 @@ export default function RouteTransition() {
     window.addEventListener('portfolio-route-transition:end', onEraseEnd)
     window.addEventListener('portfolio-typography-erase:start', onEraseStart)
     window.addEventListener('portfolio-typography-erase:end', onEraseEnd)
+    const typographyEraseSources = typographyEraseSourcesRef.current
 
     return () => {
       window.removeEventListener('portfolio-route-transition:start', onEraseStart)
@@ -261,7 +262,7 @@ export default function RouteTransition() {
       window.removeEventListener('portfolio-typography-erase:end', onEraseEnd)
       delete document.body.dataset.typographyErasing
       delete document.body.dataset.typographyEntering
-      typographyEraseSourcesRef.current.clear()
+      typographyEraseSources.clear()
     }
   }, [clearEntryTimers])
 

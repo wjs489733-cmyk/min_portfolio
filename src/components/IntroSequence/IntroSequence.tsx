@@ -365,6 +365,7 @@ export default function IntroSequence({
   const returnStartRef = useRef(0)
   const returnAwakeRef = useRef(!isReturnEntry)
   const returnAwakeStartRef = useRef(0)
+  const isReturnEntryRef = useRef(isReturnEntry)
   const rafRef = useRef<number>(0)
 
   const wakeReturnField = useCallback((now = performance.now()) => {
@@ -401,6 +402,10 @@ export default function IntroSequence({
     }, 1660)
     window.setTimeout(onComplete, 2620)
   }, [isExiting, onComplete, wakeReturnField])
+
+  useEffect(() => {
+    isReturnEntryRef.current = isReturnEntry
+  }, [isReturnEntry])
 
   useEffect(() => {
     let cancelled = false
@@ -532,7 +537,9 @@ export default function IntroSequence({
         }
       }
 
-      if (mode === 'field' && now - lastInteractionRef.current > PREVIEW_IDLE_MS && (!isReturnEntry || returnAwakeRef.current)) {
+      const returnEntry = isReturnEntryRef.current
+
+      if (mode === 'field' && now - lastInteractionRef.current > PREVIEW_IDLE_MS && (!returnEntry || returnAwakeRef.current)) {
         mode = 'preview'
         modeRef.current = 'preview'
         previewStartRef.current = now
@@ -546,12 +553,12 @@ export default function IntroSequence({
 
       const assembleElapsed = mode === 'assemble' ? now - assembleStartRef.current : 0
       const eraseElapsed = mode === 'erase' ? now - eraseStartRef.current : 0
-      const returnElapsed = isReturnEntry ? now - returnStartRef.current : 0
-      const returnQuiet = isReturnEntry && mode !== 'assemble' && !returnAwakeRef.current
+      const returnElapsed = returnEntry ? now - returnStartRef.current : 0
+      const returnQuiet = returnEntry && mode !== 'assemble' && !returnAwakeRef.current
       const returnAwakeProgress = returnAwakeRef.current
         ? easeOutCubic((now - returnAwakeStartRef.current) / 900)
         : 0
-      const fieldStrength = isReturnEntry && mode !== 'assemble'
+      const fieldStrength = returnEntry && mode !== 'assemble'
         ? returnAwakeRef.current
           ? mix(0.2, 1, returnAwakeProgress)
           : easeOutCubic((returnElapsed - 260) / 1800) * 0.16

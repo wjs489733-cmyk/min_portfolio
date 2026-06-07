@@ -36,7 +36,7 @@ const educationItems = [
   ['2026', '대구가톨릭대학교 시각디자인과 재학'],
 ]
 
-const toolLines = ['Photoshop / Illustrator /', 'Indesign / After Effects /', 'Figma / Cinema 4D']
+const toolLines = ['Photoshop / Illustrator /', 'InDesign / After Effects /', 'Figma / Cinema 4D']
 
 function ContactTypedText({
   text,

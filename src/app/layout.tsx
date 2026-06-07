@@ -13,16 +13,17 @@ const galmuri = localFont({
   preload: true,
 })
 
+const siteDescription =
+  '반복과 갱신을 중심으로 구성한 전승민의 시각디자인 포트폴리오입니다.'
+
 export const metadata: Metadata = {
   title: 'INTERACTION | JEON SEUNG MIN',
-  description:
-    '반복과 갱신을 중심으로 구성한 전승민의 시각디자인 포트폴리오입니다.',
+  description: siteDescription,
   metadataBase: new URL('https://min-portfolio-pi.vercel.app'),
   openGraph: {
     type: 'website',
     title: 'INTERACTION | JEON SEUNG MIN',
-    description:
-      '반복과 갱신을 중심으로 구성한 전승민의 시각디자인 포트폴리오입니다.',
+    description: siteDescription,
     url: 'https://min-portfolio-pi.vercel.app',
     locale: 'ko_KR',
     siteName: "MIN'S ARCHIVE",
@@ -30,8 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'INTERACTION | JEON SEUNG MIN',
-    description:
-      '반복과 갱신을 중심으로 구성한 전승민의 시각디자인 포트폴리오입니다.',
+    description: siteDescription,
   },
 }
 
