@@ -251,13 +251,21 @@ export default function ProjectsArchiveScreen({ category }: { category?: string 
           className="archive-showcase-grid"
           aria-label={currentLabel}
         >
-          {visibleProjects.map((project, index) => (
-            <ArchiveShowcaseCard
-              key={`${selectedCategory ?? 'all'}-${project.id}`}
-              project={project}
-              index={index}
-            />
-          ))}
+          {visibleProjects.length > 0 ? (
+            visibleProjects.map((project, index) => (
+              <ArchiveShowcaseCard
+                key={`${selectedCategory ?? 'all'}-${project.id}`}
+                project={project}
+                index={index}
+              />
+            ))
+          ) : (
+            <div className="archive-empty-state" role="status">
+              <span>{currentLabel}</span>
+              <strong>NO FILES YET</strong>
+              <p>이 카테고리는 아직 정리 중입니다.</p>
+            </div>
+          )}
         </div>
       </section>
     </main>

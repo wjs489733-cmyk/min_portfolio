@@ -26,32 +26,6 @@ export const categoryLabels: Record<ArchiveCategory, string> = {
   etc: 'ETC',
 }
 
-const placeholderDescription = [
-  '작품에 대한 설명을 작성하는 공간입니다. 기획 의도, 문제 정의, 작업의 핵심 방향을 간단하게 정리해 주세요.',
-  '두 번째 문단에는 디자인 과정, 시각적 선택, 구조적 판단 등을 적어두면 좋습니다.',
-  '마지막 문단에는 결과물의 의미, 배운 점, 다음 버전에서 보완하고 싶은 지점을 정리할 수 있습니다.',
-]
-
-const makePlaceholderProject = (index: number): ArchiveProject => {
-  const id = `work-${String(index).padStart(2, '0')}`
-
-  return {
-    id,
-    title: `TITLE ${String(index).padStart(2, '0')}`,
-    subtitle: '부제',
-    category: 'etc',
-    categoryLabel: 'ETC',
-    date: '날짜',
-    period: '작업 기간',
-    method: '작업 방식',
-    tools: '사용 툴',
-    field: '분야',
-    summary: '작업물에 대한 짧은 소개문을 작성하는 공간입니다.',
-    description: placeholderDescription,
-    images: [],
-  }
-}
-
 export const archiveProjects: ArchiveProject[] = [
   {
     id: 'ddd',
@@ -170,7 +144,6 @@ export const archiveProjects: ArchiveProject[] = [
       '/images/projects/yogerpresso_re/08.png',
     ],
   },
-  ...Array.from({ length: 12 }).map((_, index) => makePlaceholderProject(index + 5)),
 ]
 
 export function getArchiveProject(id: string) {
