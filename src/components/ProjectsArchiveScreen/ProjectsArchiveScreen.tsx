@@ -22,7 +22,7 @@ const categoryOptions = [
   { label: 'EDITORIAL', href: '/projects?cat=editorial', value: 'editorial' },
   { label: 'PACKAGE', href: '/projects?cat=package', value: 'package' },
   { label: 'GRAPHIC', href: '/projects?cat=graphic', value: 'graphic' },
-  { label: 'ECT', href: '/projects?cat=ect', value: 'ect' },
+  { label: 'ETC', href: '/projects?cat=etc', value: 'etc' },
 ]
 
 function at(x: number, y: number): React.CSSProperties {
@@ -207,7 +207,8 @@ function ArchiveShowcaseCard({
 }
 
 export default function ProjectsArchiveScreen({ category }: { category?: string }) {
-  const selectedCategory = isArchiveCategory(category) ? category : undefined
+  const normalizedCategory = category === 'ect' ? 'etc' : category
+  const selectedCategory = isArchiveCategory(normalizedCategory) ? normalizedCategory : undefined
   const visibleProjects = useMemo(
     () =>
       selectedCategory

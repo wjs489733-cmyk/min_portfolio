@@ -14,7 +14,7 @@ const CATEGORIES = [
   { label: 'EDITORIAL', href: '/projects?cat=editorial' },
   { label: 'PACKAGE', href: '/projects?cat=package' },
   { label: 'GRAPHIC', href: '/projects?cat=graphic' },
-  { label: 'ECT', href: '/projects?cat=ect' },
+  { label: 'ETC', href: '/projects?cat=etc' },
 ]
 
 const pct = (value: number, base: number) => `${(value / base) * 100}%`

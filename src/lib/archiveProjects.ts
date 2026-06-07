@@ -1,4 +1,4 @@
-export type ArchiveCategory = 'uxui' | 'branding' | 'editorial' | 'package' | 'graphic' | 'ect'
+export type ArchiveCategory = 'uxui' | 'branding' | 'editorial' | 'package' | 'graphic' | 'etc'
 
 export type ArchiveProject = {
   id: string
@@ -23,7 +23,7 @@ export const categoryLabels: Record<ArchiveCategory, string> = {
   editorial: 'EDITORIAL',
   package: 'PACKAGE',
   graphic: 'GRAPHIC',
-  ect: 'ECT',
+  etc: 'ETC',
 }
 
 const placeholderDescription = [
@@ -39,8 +39,8 @@ const makePlaceholderProject = (index: number): ArchiveProject => {
     id,
     title: `TITLE ${String(index).padStart(2, '0')}`,
     subtitle: '부제',
-    category: 'ect',
-    categoryLabel: 'ECT',
+    category: 'etc',
+    categoryLabel: 'ETC',
     date: '날짜',
     period: '작업 기간',
     method: '작업 방식',
@@ -96,7 +96,7 @@ export const archiveProjects: ArchiveProject[] = [
     summary: '국내에서도 산토리니의 이국적인 휴양 감각을 경험할 수 있도록 기획한 호텔 브랜드 경험 디자인 프로젝트입니다.',
     description: [
       'Aurevo는 비용과 거리의 제약으로 해외 휴양지를 쉽게 경험하기 어려운 이용자에게 국내에서 누릴 수 있는 새로운 휴식의 대안을 제안하는 호텔 브랜드입니다.',
-      '산토리니의 하얀 벽, 하늘빛, 아치형 구조, 곡선 계단, 지중해의 생명력과 노을의 따뜻한 여운을 브랜드 무드로 설정하고, 이를 로고와 컬러 시스템, 그래픽 모티프, 공간 경험으로 확장했습니다.',
+      '산토리니의 하얀 벽, 하늘빛, 아치형 구조, 곡선 계단, 지중해의 생명력과 노을의 따뜻한 여운을 브랜드 무드로 설정하고, 이를 로고와 브랜드 색상 운용, 그래픽 모티프, 공간 경험으로 확장했습니다.',
       '포스터, 키카드, 웰컴 드링크, 어메니티, 와인, 로브, 메뉴, 테이블웨어, 비치 에센셜, 굿즈 등 호텔 이용 흐름 안에서 만나는 접점들을 하나의 브랜드 경험으로 구성했습니다.',
     ],
     thumbnail: '/images/projects/aurevo/thumb.png',
@@ -156,7 +156,7 @@ export const archiveProjects: ArchiveProject[] = [
     description: [
       'YOGERPRESSO RE는 디저트 카페 브랜드 요거프레소의 심볼 로고와 브랜드 아이덴티티를 새롭게 정리한 리브랜딩 프로젝트입니다.',
       '기존의 모던하고 얇은 산세리프 기반 BI가 요거트를 주력 메뉴로 하는 브랜드의 젊고 사랑스러운 이미지와 충분히 연결되지 않는다고 판단하고, 요거트와 커피 메뉴가 직관적으로 드러나는 방향으로 심볼을 재구성했습니다.',
-      '기존 상징색인 붉은색을 유지해 브랜드의 연속성을 남기면서, 그래픽 모티프와 컬러 시스템을 통해 더 밝고 아기자기한 디저트 카페 경험으로 확장했습니다.',
+      '기존 상징색인 붉은색을 유지해 브랜드의 연속성을 남기면서, 그래픽 모티프와 색상 운용을 통해 더 밝고 아기자기한 디저트 카페 경험으로 확장했습니다.',
     ],
     thumbnail: '/images/projects/yogerpresso_re/thumb.png',
     images: [
