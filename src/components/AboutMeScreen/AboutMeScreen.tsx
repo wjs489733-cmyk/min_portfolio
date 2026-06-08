@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import ArchiveMenu from '@/components/ArchiveMenu'
+import ScrambleText from '@/components/ScrambleText'
 
 const gal: React.CSSProperties = { fontFamily: 'var(--font-galmuri)' }
 
@@ -102,7 +103,7 @@ function AboutNav() {
             fontSize: fs(27),
           }}
         >
-          JEON SEUNG MIN
+          <ScrambleText text="JEON SEUNG MIN" />
         </Link>
 
         <ArchiveMenu
@@ -133,7 +134,7 @@ function AboutNav() {
             color: '#f2f2f2',
           }}
         >
-          CONTACT
+          <ScrambleText text="CONTACT" />
         </Link>
 
         <Link
@@ -146,7 +147,7 @@ function AboutNav() {
             fontSize: fs(18),
           }}
         >
-          ARCHIVE_0001 -&gt;
+          <ScrambleText text="ARCHIVE_0001 ->" />
         </Link>
       </div>
     </div>

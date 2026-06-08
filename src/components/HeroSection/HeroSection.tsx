@@ -2,10 +2,13 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import ScrambleText from '@/components/ScrambleText'
 
 const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms))
 
 const gal: React.CSSProperties = { fontFamily: 'var(--font-galmuri)' }
+const HOME_AUX_COLOR = 'rgba(255,255,255,0.58)'
+const HOME_AUX_STRONG = 'rgba(255,255,255,0.72)'
 
 const CATEGORIES = [
   { label: 'SHOW ALL', href: '/projects' },
@@ -46,12 +49,14 @@ function TypedText({
   delay = 0,
   speed = 30,
   cursorWhileTyping = false,
+  scramble = false,
 }: {
   active: boolean
   text: string
   delay?: number
   speed?: number
   cursorWhileTyping?: boolean
+  scramble?: boolean
 }) {
   const [value, setValue] = useState('')
 
@@ -99,6 +104,10 @@ function TypedText({
       if (timerId) window.clearTimeout(timerId)
     }
   }, [active, delay, speed, text])
+
+  if (scramble && active && value === text) {
+    return <ScrambleText text={text} />
+  }
 
   return (
     <>
@@ -376,8 +385,8 @@ function VersionBox({ playTyping, visible }: { playTyping: boolean; visible: boo
     <div
       style={{
         ...at(473.659, 618.207, 188.393, 119.793),
-        border: '1px solid rgba(255,255,255,0.9)',
-        color: '#ffffff',
+        border: `1px solid ${HOME_AUX_STRONG}`,
+        color: HOME_AUX_COLOR,
         overflow: 'hidden',
         opacity: visible ? 1 : 0,
         transition: 'opacity 0.32s steps(5,end)',
@@ -393,8 +402,8 @@ function VersionBox({ playTyping, visible }: { playTyping: boolean; visible: boo
       >
         <TypedText active={playTyping} text="VERSION" delay={900} speed={34} />
       </span>
-      <span style={{ ...box(640.55, 633.565, 12.287, 1.024), background: '#ffffff' }} />
-      <span style={{ ...box(645.67, 627.421, 1.024, 12.287), background: '#ffffff' }} />
+      <span style={{ ...box(640.55, 633.565, 12.287, 1.024), background: HOME_AUX_STRONG }} />
+      <span style={{ ...box(645.67, 627.421, 1.024, 12.287), background: HOME_AUX_STRONG }} />
 
       <span
         style={{
@@ -408,8 +417,8 @@ function VersionBox({ playTyping, visible }: { playTyping: boolean; visible: boo
         <TypedText active={playTyping} text="_ 26.05.10" delay={1060} speed={34} />
       </span>
 
-      <span style={{ ...box(640.55, 721.618, 12.287, 1.024), background: '#ffffff' }} />
-      <span style={{ ...box(645.67, 716.499, 1.024, 12.287), background: '#ffffff' }} />
+      <span style={{ ...box(640.55, 721.618, 12.287, 1.024), background: HOME_AUX_STRONG }} />
+      <span style={{ ...box(645.67, 716.499, 1.024, 12.287), background: HOME_AUX_STRONG }} />
 
       {Array.from({ length: 15 }).map((_, index) => (
         <span
@@ -420,7 +429,7 @@ function VersionBox({ playTyping, visible }: { playTyping: boolean; visible: boo
             top: pct(714.451 - 618.207, 119.793),
             width: pct(index % 3 === 1 ? 1.024 : 2.048, 188.393),
             height: pct(14.334, 119.793),
-            background: `rgba(255,255,255,${Math.max(0.05, 1 - index * 0.065)})`,
+            background: `rgba(255,255,255,${Math.max(0.05, 0.64 - index * 0.042)})`,
           }}
         />
       ))}
@@ -579,7 +588,7 @@ export default function HeroSection({
           padding: 0,
         }}
       >
-        <TypedText active={visible} text="JEON SEUNG MIN" delay={60} speed={32} />
+        <TypedText active={visible} text="JEON SEUNG MIN" delay={60} speed={32} scramble />
       </button>
 
       <button
@@ -599,7 +608,7 @@ export default function HeroSection({
           padding: 0,
         }}
       >
-        <TypedText active={visible} text="MIN'S ARCHIVE" delay={220} speed={32} />
+        <TypedText active={visible} text="MIN'S ARCHIVE" delay={220} speed={32} scramble />
       </button>
 
       {archiveVisible && (
@@ -637,6 +646,7 @@ export default function HeroSection({
                 delay={index * 46}
                 speed={18}
                 cursorWhileTyping
+                scramble
               />
             </Link>
           ))}
@@ -655,7 +665,7 @@ export default function HeroSection({
           whiteSpace: 'nowrap',
         }}
       >
-        <TypedText active={visible} text="ARCHIVE_0001 ->" delay={380} speed={31} />
+        <TypedText active={visible} text="ARCHIVE_0001 ->" delay={380} speed={31} scramble />
       </Link>
 
       <h1
@@ -678,7 +688,7 @@ export default function HeroSection({
       <TitleCaret visible={visible} />
       <PixelDots visible={visible} />
 
-      <span style={{ ...at(473.659, 521.987, 972.681, 2), ...objectState, background: '#ffffff' }} />
+      <span style={{ ...at(473.659, 521.987, 972.681, 2), ...objectState, background: HOME_AUX_STRONG }} />
 
       <span
         style={{
@@ -686,7 +696,7 @@ export default function HeroSection({
           ...at(473.659, 545.95),
           fontSize: fs(24),
           lineHeight: 1,
-          color: '#ffffff',
+          color: HOME_AUX_COLOR,
           whiteSpace: 'pre',
         }}
       >
@@ -699,7 +709,7 @@ export default function HeroSection({
           ...at(1254.87, 545.95),
           fontSize: fs(24),
           lineHeight: 1,
-          color: '#ffffff',
+          color: HOME_AUX_COLOR,
           whiteSpace: 'nowrap',
         }}
       >

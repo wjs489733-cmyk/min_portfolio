@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useEffect, useState, type CSSProperties } from 'react'
 import type { ArchiveProject } from '@/lib/archiveProjects'
 import ArchiveMenu from '@/components/ArchiveMenu'
+import ScrambleText from '@/components/ScrambleText'
 
 const gal: CSSProperties = { fontFamily: 'var(--font-galmuri)' }
 
@@ -129,7 +130,7 @@ function WorkNav({ project }: { project: ArchiveProject }) {
             color: '#f2f2f2',
           }}
         >
-          WORKS / {project.categoryLabel}
+          <ScrambleText text={`WORKS / ${project.categoryLabel}`} />
         </Link>
 
         <ArchiveMenu
@@ -161,7 +162,7 @@ function WorkNav({ project }: { project: ArchiveProject }) {
             color: '#f2f2f2',
           }}
         >
-          CONTACT
+          <ScrambleText text="CONTACT" />
         </Link>
 
         <Link
@@ -174,7 +175,7 @@ function WorkNav({ project }: { project: ArchiveProject }) {
             fontSize: fs(18),
           }}
         >
-          ARCHIVE_0001 -&gt;
+          <ScrambleText text="ARCHIVE_0001 ->" />
         </Link>
       </div>
     </div>

@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
+import ScrambleText from '@/components/ScrambleText'
 
 const gal: React.CSSProperties = { fontFamily: 'var(--font-galmuri)' }
 const pct = (value: number, base: number) => `${(value / base) * 100}%`
@@ -738,7 +739,7 @@ export default function IntroSequence({
             whiteSpace: 'nowrap',
           }}
         >
-          {introLabels.left}
+          {isErasingLabels || isTypingLabels ? introLabels.left : <ScrambleText text={introLabels.left} />}
           <InlineCursor visible={isErasingLabels || isTypingLabels} />
         </button>
 
@@ -757,7 +758,7 @@ export default function IntroSequence({
             whiteSpace: 'nowrap',
           }}
         >
-          {introLabels.right}
+          {isErasingLabels || isTypingLabels ? introLabels.right : <ScrambleText text={introLabels.right} />}
           <InlineCursor visible={isErasingLabels || isTypingLabels} />
         </button>
 

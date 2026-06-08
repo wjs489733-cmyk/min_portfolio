@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react'
 import { usePathname } from 'next/navigation'
+import ScrambleText from '@/components/ScrambleText'
 
 const gal: CSSProperties = { fontFamily: 'var(--font-galmuri)' }
 
@@ -65,6 +66,10 @@ function MenuTypedText({
       if (intervalId) window.clearInterval(intervalId)
     }
   }, [active, delay, text])
+
+  if (active && value === text) {
+    return <ScrambleText text={text} />
+  }
 
   return (
     <>
@@ -167,7 +172,7 @@ export default function ArchiveMenu({
           ...buttonStyle,
         }}
       >
-        MIN&apos;S ARCHIVE
+        <ScrambleText text="MIN'S ARCHIVE" />
       </button>
 
       {visible && (

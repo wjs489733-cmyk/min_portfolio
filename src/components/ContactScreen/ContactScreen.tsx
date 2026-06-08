@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useState, type CSSProperties } from 'react'
 import ArchiveMenu from '@/components/ArchiveMenu'
+import ScrambleText from '@/components/ScrambleText'
 
 const gal: CSSProperties = { fontFamily: 'var(--font-galmuri)' }
 
@@ -30,7 +31,7 @@ const profileItems = [
 ]
 
 const educationItems = [
-  ['2020.03', '정곡고등학교 졸업'],
+  ['2020.03', '형곡고등학교 졸업'],
   ['2023.03', '영진전문대학교 콘텐츠디자인과 입학'],
   ['2025.03', '대구가톨릭대학교 시각디자인과 편입'],
   ['2026', '대구가톨릭대학교 시각디자인과 재학'],
@@ -143,7 +144,7 @@ function ContactNav() {
             color: '#f2f2f2',
           }}
         >
-          JEON SEUNG MIN
+          <ScrambleText text="JEON SEUNG MIN" />
         </Link>
 
         <ArchiveMenu
@@ -174,7 +175,7 @@ function ContactNav() {
             color: '#f2f2f2',
           }}
         >
-          CONTACT
+          <ScrambleText text="CONTACT" />
         </Link>
 
         <Link
@@ -187,7 +188,7 @@ function ContactNav() {
             fontSize: fs(18),
           }}
         >
-          ARCHIVE_0001 -&gt;
+          <ScrambleText text="ARCHIVE_0001 ->" />
         </Link>
       </div>
     </div>

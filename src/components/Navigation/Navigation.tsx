@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import ArchiveMenu from '@/components/ArchiveMenu'
+import ScrambleText from '@/components/ScrambleText'
 
 const gal: React.CSSProperties = { fontFamily: 'var(--font-galmuri)' }
 const SVG_WIDTH = 1920
@@ -75,7 +76,7 @@ export default function Navigation({
             ...at(50, 56),
           }}
         >
-          JEON SEUNG MIN
+          <ScrambleText text="JEON SEUNG MIN" />
         </Link>
 
         <ArchiveMenu
@@ -102,7 +103,7 @@ export default function Navigation({
             pointerEvents: 'auto',
           }}
         >
-          CONTACT
+          <ScrambleText text="CONTACT" />
         </Link>
 
         <Link
@@ -115,7 +116,7 @@ export default function Navigation({
             pointerEvents: 'auto',
           }}
         >
-          ARCHIVE_0001 -&gt;
+          <ScrambleText text="ARCHIVE_0001 ->" />
         </Link>
       </div>
     </nav>

@@ -103,6 +103,29 @@ button {
   filter: drop-shadow(0 0 7px rgba(255,255,255,0.26));
 }
 
+.scramble-text {
+  display: inline-block;
+  white-space: inherit;
+  letter-spacing: inherit;
+  font-variant-ligatures: none;
+  line-height: inherit;
+}
+
+.scramble-text.is-scrambling {
+  color: #ffffff;
+  text-shadow:
+    0 0 9px rgba(255,255,255,0.76),
+    0 0 22px rgba(255,255,255,0.3);
+}
+
+.home-image-frame .scramble-text.is-scrambling,
+.home-image-focus .scramble-text.is-scrambling {
+  color: inherit;
+  text-shadow:
+    0 0 7px currentColor,
+    0 0 18px rgba(255,255,255,0.24);
+}
+
 .site-nav-link {
   transition:
     color 180ms steps(4,end),
@@ -238,8 +261,6 @@ body[data-typography-erasing="true"] :where(
   .contact-block,
   .archive-nav-link,
   .archive-category-strip,
-  .archive-showcase-meta,
-  .archive-showcase-placeholder,
   .work-nav-link,
   .work-info
 ) {
@@ -270,8 +291,6 @@ body[data-typography-entering="true"] :where(
   .contact-block,
   .archive-nav-link,
   .archive-category-strip,
-  .archive-showcase-meta,
-  .archive-showcase-placeholder,
   .work-nav-link,
   .work-info
 ) {
@@ -310,8 +329,6 @@ body[data-typography-erasing="true"] .archive-showcase-card {
 }
 
 body[data-typography-entering="true"] :where(
-  .archive-showcase-meta,
-  .archive-showcase-placeholder,
   .work-info,
   .work-media-placeholder
 ) {
@@ -324,9 +341,7 @@ body[data-typography-entering="true"] .archive-category-strip {
 
 
 body[data-archive-filter-erasing="true"] :where(
-  .archive-category-strip,
-  .archive-showcase-meta,
-  .archive-showcase-placeholder
+  .archive-category-strip
 ) {
   animation: globalTypographyEraseOut 420ms steps(10,end) both;
 }
@@ -337,9 +352,7 @@ body[data-archive-filter-erasing="true"] .archive-showcase-card {
 }
 
 body[data-archive-filter-holding="true"] :where(
-  .archive-category-strip,
-  .archive-showcase-meta,
-  .archive-showcase-placeholder
+  .archive-category-strip
 ) {
   opacity: 0;
   clip-path: inset(0 0 100% 0);
@@ -352,9 +365,7 @@ body[data-archive-filter-holding="true"] .archive-showcase-card {
 }
 
 body[data-archive-filter-entering="true"] :where(
-  .archive-category-strip,
-  .archive-showcase-meta,
-  .archive-showcase-placeholder
+  .archive-category-strip
 ) {
   animation: globalTypographyTypeIn 620ms steps(12,end) both;
 }
@@ -364,11 +375,11 @@ body[data-archive-filter-entering="true"] .archive-category-strip {
 }
 
 body[data-archive-filter-entering="true"] .archive-showcase-card {
-  animation: globalSurfaceTypeIn 680ms steps(12,end) both;
+  animation: archiveCardWake 760ms steps(12,end) both;
   animation-delay: calc(120ms + var(--card-index) * 44ms);
 }
 body[data-typography-entering="true"] .archive-showcase-card {
-  animation: globalSurfaceTypeIn 720ms steps(12,end) both;
+  animation: archiveCardWake 820ms steps(12,end) both;
   animation-delay: calc(260ms + var(--card-index) * 46ms);
 }
 
@@ -457,8 +468,9 @@ body[data-typography-entering="true"] .work-info {
 .home-arrow-button:hover,
 .home-arrow-button:focus-visible {
   filter:
-    drop-shadow(0 0 9px rgba(255,255,255,0.34))
-    drop-shadow(0 0 18px rgba(255,255,255,0.16));
+    drop-shadow(0 0 12px rgba(255,255,255,0.68))
+    drop-shadow(0 0 28px rgba(255,255,255,0.34))
+    drop-shadow(0 0 54px rgba(255,255,255,0.16));
 }
 
 .home-arrow-pixel {
@@ -469,8 +481,12 @@ body[data-typography-entering="true"] .work-info {
 
 .home-arrow-button:hover .home-arrow-pixel,
 .home-arrow-button:focus-visible .home-arrow-pixel {
-  background: rgba(255,255,255,0.48) !important;
-  box-shadow: 0 0 8px rgba(255,255,255,0.22);
+  opacity: 1 !important;
+  background: #ffffff !important;
+  box-shadow:
+    0 0 8px rgba(255,255,255,0.78),
+    0 0 18px rgba(255,255,255,0.34);
+  animation-play-state: paused;
 }
 
 @keyframes lnbBoxTypeIn {
@@ -649,66 +665,25 @@ img {
 @keyframes homeImageFocusIn {
   0% {
     opacity: 0;
-    clip-path: inset(48% 0 49% 0);
-    transform: translate(-50%, -50%) scale(0.88);
-    filter: grayscale(1) brightness(0.58) contrast(1.7);
+    transform: translate(-50%, -43%) rotateX(15deg) rotateY(-18deg) rotateZ(-6deg) scale(0.72);
+    filter: grayscale(0.86) brightness(0.76) contrast(1.16) blur(1px);
   }
   18% {
     opacity: 1;
-    clip-path: inset(41% 0 39% 0);
+    transform: translate(-50%, -47%) rotateX(10deg) rotateY(-12deg) rotateZ(-4deg) scale(0.86);
   }
-  42% {
-    clip-path: inset(22% 0 24% 0);
-    transform: translate(-50%, -50%) scale(0.94);
+  54% {
+    transform: translate(-50%, -52%) rotateX(3deg) rotateY(-4deg) rotateZ(-1deg) scale(1.035);
+    filter: grayscale(0.2) brightness(1.08) contrast(1.06) blur(0);
   }
-  68% {
+  76% {
     opacity: 1;
-    clip-path: inset(0 0 0 0);
-    transform: translate(-50%, -50%) scale(1.018);
-    filter: grayscale(0.35) brightness(0.92) contrast(1.22);
+    transform: translate(-50%, -50%) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(0.985);
   }
   100% {
     opacity: 1;
-    clip-path: inset(0 0 0 0);
     transform: translate(-50%, -50%) scale(1);
-    filter: grayscale(0) brightness(1.04);
-  }
-}
-
-@keyframes homeImageRenderGrid {
-  0% {
-    opacity: 0.92;
-    transform: translate3d(-6%, 0, 0) scaleX(0.82);
-  }
-  34% {
-    opacity: 0.78;
-    transform: translate3d(4%, 0, 0) scaleX(1);
-  }
-  68% {
-    opacity: 0.42;
-    transform: translate3d(0, 0, 0) scaleX(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translate3d(0, 0, 0) scaleX(1);
-  }
-}
-
-@keyframes homeImageRenderScan {
-  0% {
-    opacity: 0;
-    transform: translateY(-110%);
-  }
-  18% {
-    opacity: 0.76;
-  }
-  84% {
-    opacity: 0.28;
-    transform: translateY(112%);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(112%);
+    filter: grayscale(0) brightness(1.04) contrast(1);
   }
 }
 
@@ -798,9 +773,11 @@ img {
   position: absolute;
   inset: -24% -40%;
   z-index: 18;
-  background: rgba(19,19,19,0.3);
+  background:
+    radial-gradient(circle at 50% 46%, rgba(255,255,255,0.055), transparent 34%),
+    rgba(19,19,19,0.34);
   pointer-events: none;
-  animation: fadeIn 180ms steps(3,end) both;
+  animation: fadeIn 220ms steps(4,end) both;
 }
 
 .home-image-focus {
@@ -819,7 +796,7 @@ img {
   transform-style: preserve-3d;
   overflow: hidden;
   isolation: isolate;
-  animation: homeImageFocusIn 680ms steps(9,end) both;
+  animation: homeImageFocusIn 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.1),
     0 0 26px rgba(255,255,255,0.11),
@@ -834,47 +811,37 @@ img {
 .home-image-focus::after {
   content: "";
   position: absolute;
-  inset: 0;
   pointer-events: none;
 }
 
 .home-image-focus::before {
   z-index: 1;
-  background-image:
-    linear-gradient(90deg, rgba(255,255,255,0.22) 0 1px, transparent 1px 100%),
-    linear-gradient(0deg, rgba(0,0,0,0.22) 0 1px, transparent 1px 100%),
-    repeating-linear-gradient(
-      90deg,
-      rgba(255,255,255,0.0) 0 12px,
-      rgba(255,255,255,0.24) 12px 18px,
-      rgba(0,0,0,0.18) 18px 28px
-    );
-  background-size: 12px 12px, 12px 12px, 100% 100%;
-  mix-blend-mode: multiply;
-  animation: homeImageRenderGrid 720ms steps(8,end) both;
+  inset: 0;
+  border: 1px solid rgba(255,255,255,0.28);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+  opacity: 0.58;
 }
 
 .home-image-focus::after {
-  z-index: 3;
-  height: 22%;
-  inset: auto 0 0;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0) 0%,
-      rgba(255,255,255,0.45) 46%,
-      rgba(19,19,19,0.42) 54%,
-      rgba(255,255,255,0) 100%
-    );
-  animation: homeImageRenderScan 620ms steps(7,end) both;
+  z-index: 1;
+  inset: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  opacity: 0;
+  transition: opacity 180ms steps(4,end), inset 180ms steps(4,end);
 }
 
 .home-image-focus:hover {
   filter: brightness(1.08) contrast(1.03);
+  transform: translate(-50%, -50%) scale(1.018);
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.24),
     0 0 34px rgba(255,255,255,0.2),
     0 34px 82px rgba(0,0,0,0.6);
+}
+
+.home-image-focus:hover::after {
+  inset: 14px;
+  opacity: 0.7;
 }
 
 .home-image-focus-number {
@@ -1575,6 +1542,23 @@ img {
   color: #f2f2f2;
   overflow-x: hidden;
   overflow-y: auto;
+  position: relative;
+}
+
+.archive-screen::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background:
+    radial-gradient(circle at 12% 22%, rgba(255,255,255,0.08) 0 2px, transparent 3px),
+    radial-gradient(circle at 78% 18%, rgba(255,255,255,0.06) 0 2px, transparent 3px),
+    radial-gradient(circle at 64% 72%, rgba(255,255,255,0.08) 0 2px, transparent 3px),
+    repeating-linear-gradient(90deg, transparent 0 96px, rgba(255,255,255,0.018) 96px 97px),
+    repeating-linear-gradient(0deg, transparent 0 78px, rgba(255,255,255,0.014) 78px 79px);
+  background-size: 220px 220px, 300px 300px, 260px 260px, 100% 100%, 100% 100%;
 }
 
 .archive-nav-shell {
@@ -1632,7 +1616,7 @@ img {
   top: clamp(118px, 12.4vh, 148px);
   z-index: 31;
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto auto;
   align-items: center;
   gap: clamp(14px, 1vw, 22px);
   font-family: var(--font-galmuri);
@@ -1781,6 +1765,7 @@ img {
   align-items: start;
   perspective: 1800px;
   perspective-origin: 50% 18%;
+  transform-style: preserve-3d;
 }
 
 .archive-empty-state {
@@ -1826,6 +1811,7 @@ img {
   --shine-x: 50%;
   --shine-y: 50%;
   --shine-opacity: 0;
+  --render-opacity: 0.62;
   position: relative;
   min-height: clamp(560px, 74vh, 860px);
   display: block;
@@ -1847,6 +1833,8 @@ img {
     transform 180ms ease-out,
     box-shadow 220ms steps(5,end),
     filter 220ms steps(5,end);
+  animation: archiveCardWake 720ms steps(10,end) both;
+  animation-delay: calc(80ms + var(--card-index) * 44ms);
 }
 
 .archive-showcase-card:nth-child(2n) {
@@ -1922,6 +1910,9 @@ img {
     0 0 28px rgba(255,255,255,0.025);
   transform: translate(-50%, -50%) translateZ(20px);
   transform-style: preserve-3d;
+  transition:
+    transform 180ms ease-out,
+    box-shadow 180ms steps(4,end);
 }
 
 .archive-showcase-card.has-thumbnail .archive-thumb-frame {
@@ -1932,6 +1923,13 @@ img {
   aspect-ratio: auto;
   box-shadow: none;
   transform: translateZ(16px);
+}
+
+.archive-showcase-card:hover .archive-thumb-frame,
+.archive-showcase-card:focus-visible .archive-thumb-frame {
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.08),
+    0 26px 80px rgba(0,0,0,0.38);
 }
 
 .archive-showcase-card.has-thumbnail .archive-showcase-thumb::after {
@@ -1973,7 +1971,8 @@ img {
     translate3d(var(--media-x), var(--media-y), 34px)
     scale(1.025);
   transition:
-    filter 220ms steps(6,end),
+    filter 260ms steps(8,end),
+    opacity 180ms steps(4,end),
     transform 180ms ease-out;
 }
 
@@ -1987,7 +1986,7 @@ img {
 
 .archive-showcase-card.has-thumbnail:hover .archive-showcase-thumb::after,
 .archive-showcase-card.has-thumbnail:focus-visible .archive-showcase-thumb::after {
-  opacity: 0.64;
+  opacity: 0.24;
 }
 
 .archive-showcase-placeholder {
@@ -1998,8 +1997,14 @@ img {
   line-height: 1;
   color: rgba(255,255,255,0.5);
   letter-spacing: 0;
-  opacity: 1;
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
   text-shadow: 0 0 14px rgba(255,255,255,0.1);
+}
+
+.archive-showcase-card:hover .archive-showcase-placeholder,
+.archive-showcase-card:focus-visible .archive-showcase-placeholder {
+  animation: archiveHoverTypeLine 520ms steps(10,end) 120ms both;
 }
 
 .archive-showcase-meta {
@@ -2014,8 +2019,11 @@ img {
   gap: 24px;
   font-family: var(--font-galmuri);
   line-height: 1;
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
   transform: translateZ(86px);
-  transition: opacity 180ms steps(4,end);
+  pointer-events: none;
+  transition: opacity 120ms steps(3,end);
 }
 
 .archive-showcase-meta h2 {
@@ -2040,6 +2048,45 @@ img {
   font-size: clamp(11px, 0.72vw, 15px);
   line-height: 1.25;
   color: rgba(255,255,255,0.62);
+}
+
+.archive-showcase-meta span,
+.archive-showcase-meta h2,
+.archive-showcase-meta p,
+.archive-card-hud span {
+  overflow: hidden;
+  clip-path: inset(0 100% 0 0);
+}
+
+.archive-showcase-card:hover .archive-showcase-meta,
+.archive-showcase-card:focus-visible .archive-showcase-meta {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+.archive-showcase-card:hover .archive-showcase-meta > div:first-child > span,
+.archive-showcase-card:focus-visible .archive-showcase-meta > div:first-child > span {
+  animation: archiveHoverTypeLine 340ms steps(6,end) 80ms both;
+}
+
+.archive-showcase-card:hover .archive-showcase-meta h2,
+.archive-showcase-card:focus-visible .archive-showcase-meta h2 {
+  animation: archiveHoverTypeLine 520ms steps(10,end) 150ms both;
+}
+
+.archive-showcase-card:hover .archive-showcase-meta p,
+.archive-showcase-card:focus-visible .archive-showcase-meta p {
+  animation: archiveHoverTypeLine 580ms steps(12,end) 260ms both;
+}
+
+.archive-showcase-card:hover .archive-showcase-meta > div:last-child span:first-child,
+.archive-showcase-card:focus-visible .archive-showcase-meta > div:last-child span:first-child {
+  animation: archiveHoverTypeLine 420ms steps(8,end) 390ms both;
+}
+
+.archive-showcase-card:hover .archive-showcase-meta > div:last-child span:last-child,
+.archive-showcase-card:focus-visible .archive-showcase-meta > div:last-child span:last-child {
+  animation: archiveHoverTypeLine 420ms steps(8,end) 480ms both;
 }
 
 .archive-showcase-meta > div:last-child {
@@ -2069,6 +2116,10 @@ img {
     color 180ms steps(4,end);
 }
 
+.archive-card-hud span {
+  display: block;
+}
+
 .archive-showcase-card:hover .archive-card-hud,
 .archive-showcase-card:focus-visible .archive-card-hud {
   opacity: 1;
@@ -2076,33 +2127,33 @@ img {
   color: rgba(255,255,255,0.82);
 }
 
-.archive-render-grid {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none;
-  background:
-    repeating-linear-gradient(90deg, rgba(255,255,255,0.07) 0 1px, transparent 1px 22px),
-    repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 22px);
-  opacity: 0;
-  mix-blend-mode: screen;
-  animation: archiveRenderGrid 980ms steps(8,end) both;
-  animation-delay: calc(80ms + var(--card-index) * 48ms);
+.archive-showcase-card:hover .archive-card-hud span,
+.archive-showcase-card:focus-visible .archive-card-hud span {
+  animation: archiveHoverTypeLine 460ms steps(9,end) both;
 }
 
-.archive-scan-line {
+.archive-showcase-card:hover .archive-card-hud span:nth-child(1),
+.archive-showcase-card:focus-visible .archive-card-hud span:nth-child(1) {
+  animation-delay: 70ms;
+}
+
+.archive-showcase-card:hover .archive-card-hud span:nth-child(2),
+.archive-showcase-card:focus-visible .archive-card-hud span:nth-child(2) {
+  animation-delay: 180ms;
+}
+
+.archive-showcase-card:hover .archive-card-hud span:nth-child(3),
+.archive-showcase-card:focus-visible .archive-card-hud span:nth-child(3) {
+  animation-delay: 290ms;
+}
+
+.archive-card-hit {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: -12%;
-  z-index: 5;
-  height: 18%;
-  pointer-events: none;
-  background: linear-gradient(180deg, transparent, rgba(255,255,255,0.12), transparent);
-  opacity: 0;
-  mix-blend-mode: screen;
-  animation: archiveScanDrop 1180ms steps(12,end) both;
-  animation-delay: calc(160ms + var(--card-index) * 54ms);
+  inset: 0;
+  z-index: 20;
+  display: block;
+  background: transparent;
+  transform: translateZ(128px);
 }
 
 .archive-category-strip a {
@@ -2220,35 +2271,47 @@ img {
   }
 }
 
-@keyframes archiveRenderGrid {
+@keyframes archiveCardWake {
   0% {
-    opacity: 0.86;
-    clip-path: inset(0 0 0 0);
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    filter: brightness(0.52) contrast(1.35);
   }
-  72% {
-    opacity: 0.24;
+  28% {
+    opacity: 0.82;
+    clip-path: inset(0 0 38% 0);
+    filter: brightness(1.14) contrast(1.18);
+  }
+  58% {
+    opacity: 1;
     clip-path: inset(0 0 0 0);
+    filter: brightness(0.86) contrast(1.22);
   }
   100% {
-    opacity: 0;
-    clip-path: inset(0 0 0 100%);
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    filter: brightness(1) contrast(1);
   }
 }
 
-@keyframes archiveScanDrop {
+@keyframes archiveHoverTypeLine {
   0% {
     opacity: 0;
-    transform: translateY(0);
+    clip-path: inset(0 100% 0 0);
+    transform: translateX(-6px);
+    filter: brightness(1.8);
   }
-  12% {
-    opacity: 0.56;
-  }
-  74% {
-    opacity: 0.18;
+  72% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+    filter: brightness(1.18);
   }
   100% {
-    opacity: 0;
-    transform: translateY(720%);
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+    filter: brightness(1);
   }
 }
 

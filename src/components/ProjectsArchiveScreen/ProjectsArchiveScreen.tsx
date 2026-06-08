@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useMemo } from 'react'
 import { archiveProjects, categoryLabels, type ArchiveCategory, type ArchiveProject } from '@/lib/archiveProjects'
 import ArchiveMenu from '@/components/ArchiveMenu'
+import ScrambleText from '@/components/ScrambleText'
 
 const gal: React.CSSProperties = { fontFamily: 'var(--font-galmuri)' }
 
@@ -67,7 +68,7 @@ function ArchiveNav() {
             color: '#f2f2f2',
           }}
         >
-          JEON SEUNG MIN
+          <ScrambleText text="JEON SEUNG MIN" />
         </Link>
 
         <ArchiveMenu
@@ -99,7 +100,7 @@ function ArchiveNav() {
             color: '#f2f2f2',
           }}
         >
-          CONTACT
+          <ScrambleText text="CONTACT" />
         </Link>
 
         <button
@@ -115,7 +116,7 @@ function ArchiveNav() {
             padding: 0,
           }}
         >
-          ARCHIVE_0001 -&gt;
+          <ScrambleText text="ARCHIVE_0001 ->" />
         </button>
       </div>
     </div>
@@ -181,8 +182,6 @@ function ArchiveShowcaseCard({
             {!hasThumbnail && <span className="archive-showcase-placeholder">coming soon</span>}
           </div>
         </div>
-        <div className="archive-render-grid" aria-hidden />
-        <div className="archive-scan-line" aria-hidden />
       </div>
 
       <footer className="archive-showcase-meta">
@@ -200,8 +199,9 @@ function ArchiveShowcaseCard({
       <div className="archive-card-hud" aria-hidden>
         <span>ARCHIVE_{displayIndex}</span>
         <span>{project.categoryLabel}</span>
-        <span>RENDER READY</span>
+        <span>OPEN FILE</span>
       </div>
+      <span className="archive-card-hit" aria-hidden />
     </Link>
   )
 }
@@ -226,7 +226,6 @@ export default function ProjectsArchiveScreen({ category }: { category?: string 
       <section className="archive-stage">
         <div className="archive-index-panel" aria-label="Archive index status">
           <span>INDEXING</span>
-          <strong>{currentLabel}</strong>
           <span>{visibleCount} FILES</span>
         </div>
 
@@ -241,7 +240,7 @@ export default function ProjectsArchiveScreen({ category }: { category?: string 
                 className={active ? 'is-active' : undefined}
                 data-transition-kind="archive-filter"
               >
-                {option.label}
+                <ScrambleText text={option.label} />
               </Link>
             )
           })}

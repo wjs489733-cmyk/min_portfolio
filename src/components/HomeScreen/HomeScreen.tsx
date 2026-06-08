@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
+import ScrambleText from '@/components/ScrambleText'
 
 const gal: React.CSSProperties = { fontFamily: 'var(--font-galmuri)' }
 
@@ -221,6 +222,7 @@ function TypedText({
   speed = 22,
   eraseSpeed = 12,
   cursor = false,
+  scramble = false,
 }: {
   active: boolean
   text: string
@@ -228,8 +230,13 @@ function TypedText({
   speed?: number
   eraseSpeed?: number
   cursor?: boolean
+  scramble?: boolean
 }) {
   const value = useTypedText(active, text, delay, speed, eraseSpeed)
+
+  if (scramble && active && value === text) {
+    return <ScrambleText text={text} />
+  }
 
   return (
     <>
@@ -404,7 +411,7 @@ function ImageOrbit({ active }: { active: boolean }) {
                   color: frame.tone === '#707070' ? 'rgba(255,255,255,0.48)' : 'rgba(0,0,0,0.42)',
                 }}
               >
-                {String(index + 1).padStart(2, '0')}
+                <ScrambleText text={String(index + 1).padStart(2, '0')} />
               </span>
               <span
                 className="home-image-frame-title"
@@ -417,7 +424,7 @@ function ImageOrbit({ active }: { active: boolean }) {
                   color: frame.tone === '#707070' ? 'rgba(255,255,255,0.32)' : 'rgba(0,0,0,0.24)',
                 }}
               >
-                {frame.title}
+                <ScrambleText text={frame.title} />
               </span>
               {frame.lines.length > 3 && (
                 <span
@@ -428,10 +435,10 @@ function ImageOrbit({ active }: { active: boolean }) {
                     bottom: fs(12),
                     fontSize: fs(9),
                     lineHeight: 1,
-                    color: frame.tone === '#707070' ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.28)',
-                  }}
-                >
-                  +{frame.lines.length - 3}
+                  color: frame.tone === '#707070' ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.28)',
+                }}
+              >
+                  <ScrambleText text={`+${frame.lines.length - 3}`} />
                 </span>
               )}
             </button>
@@ -454,13 +461,17 @@ function ImageOrbit({ active }: { active: boolean }) {
             border: '1px solid rgba(255,255,255,0.92)',
           }}
         >
-          <span className="home-image-focus-number">{String(selectedIndex + 1).padStart(2, '0')}</span>
+          <span className="home-image-focus-number">
+            <ScrambleText text={String(selectedIndex + 1).padStart(2, '0')} />
+          </span>
           <span className="home-image-focus-title">
             {selectedFrame.lines.map((line) => (
               <span key={line}>{line}</span>
             ))}
           </span>
-          <span className="home-image-focus-note">CLICK TO CLOSE</span>
+          <span className="home-image-focus-note">
+            <ScrambleText text="CLICK TO CLOSE" />
+          </span>
         </button>
       )}
     </div>
@@ -859,7 +870,7 @@ export default function HomeScreen({
               padding: 0,
             }}
           >
-            <TypedText active={active} text="JEON SEUNG MIN" delay={40} speed={22} />
+            <TypedText active={active} text="JEON SEUNG MIN" delay={40} speed={22} scramble />
           </button>
 
           <PixelTriangle active={active} />
@@ -879,7 +890,7 @@ export default function HomeScreen({
               padding: 0,
             }}
           >
-            <TypedText active={active} text="MIN'S ARCHIVE" delay={180} speed={22} />
+            <TypedText active={active} text="MIN'S ARCHIVE" delay={180} speed={22} scramble />
           </button>
 
           {archiveVisible && (
@@ -899,6 +910,7 @@ export default function HomeScreen({
                     delay={index * 46}
                     speed={18}
                     cursor
+                    scramble
                   />
                 </Link>
               ))}
@@ -916,7 +928,7 @@ export default function HomeScreen({
               color: '#ffffff',
             }}
           >
-            <TypedText active={active} text="CONTACT" delay={360} speed={22} />
+            <TypedText active={active} text="CONTACT" delay={360} speed={22} scramble />
           </Link>
 
           <Link
@@ -929,7 +941,7 @@ export default function HomeScreen({
               fontSize: fs(18),
             }}
           >
-            <TypedText active={active} text="ARCHIVE_0001 ->" delay={500} speed={22} />
+            <TypedText active={active} text="ARCHIVE_0001 ->" delay={500} speed={22} scramble />
           </Link>
 
           <span
