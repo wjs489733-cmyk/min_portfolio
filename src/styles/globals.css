@@ -2651,19 +2651,19 @@ img {
   margin: 0 auto;
   padding: clamp(118px, 10.8vh, 136px) clamp(44px, 2.6vw, 54px) 48px;
   display: grid;
-  grid-template-columns: minmax(0, 2.38fr) minmax(300px, 0.9fr);
-  gap: clamp(28px, 2.15vw, 46px);
+  grid-template-columns: minmax(0, 2.95fr) minmax(280px, 0.78fr);
+  gap: clamp(24px, 1.7vw, 38px);
   align-items: start;
 }
 
 .work-media-stack {
   display: grid;
-  gap: clamp(10px, 0.8vw, 16px);
+  gap: 0;
 }
 
 .work-media-placeholder {
   width: 100%;
-  min-height: clamp(520px, 45vw, 884px);
+  min-height: clamp(560px, 48vw, 940px);
   background: #a6a6a6;
 }
 
