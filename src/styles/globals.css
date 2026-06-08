@@ -2647,7 +2647,7 @@ img {
 }
 
 .work-stage {
-  width: min(100vw, 177.777778svh);
+  width: 100vw;
   margin: 0 auto;
   padding: clamp(118px, 10.8vh, 136px) clamp(44px, 2.6vw, 54px) 48px;
   display: grid;
